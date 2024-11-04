@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="timeline-header">welcome to my timeline</div>
+      <div class="timeline-comp">
+        <div class="time-line-item">
+          <div class="left-content">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias
+            ipsum, fuga illo facilis aut unde molestiae animi possimus sequi
+            odio officiis omnis adipisci repellendus cupiditate architecto eum
+            provident error facere.
+          </div>
+          <div class="timeline">
+            <div class="timeline-circle">21:30</div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="right-content"></div>
+        </div>
+        <div class="time-line-item">
+          <div class="left-content"></div>
+          <div class="timeline">
+            <div class="timeline-circle">23:00</div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="right-content">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores
+            nemo, est, nisi harum optio laudantium aliquid, atque ipsa corporis
+            modi omnis quia explicabo quos assumenda magni eaque tempore placeat
+            qui amet facere quod. Eveniet, cumque voluptas accusamus culpa,
+            exercitationem ipsam cupiditate laudantium, voluptatibus libero
+            recusandae iste? Accusamus saepe atque fuga!
+          </div>
+        </div>
+        <div class="time-line-item">
+          <div class="left-content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, laborum
+            porro. Molestias exercitationem, velit accusantium quas reiciendis
+            modi excepturi at esse illo deleniti optio odio recusandae
+            consectetur. Saepe, repudiandae aliquid natus eveniet esse
+            reprehenderit suscipit, explicabo perspiciatis necessitatibus
+            laborum autem deleniti enim quas aperiam dolores, amet minima sit
+            omnis minus? Dicta tempora maxime nemo animi expedita exercitationem
+            delectus ipsa commodi, quae non fugiat, autem sit nihil rerum iure
+            dolore officiis numquam labore? Earum architecto tempora rerum
+            repellat veritatis consectetur recusandae? Nobis dolorem dicta odit
+            debitis tempora ex totam ipsam, vel laborum magnam quis. Quibusdam
+            quidem enim numquam dolorum, unde fugiat.
+          </div>
+          <div class="timeline">
+            <div class="timeline-circle">00:30</div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="right-content"></div>
+        </div>
+        <div class="time-line-item">
+          <div class="left-content"></div>
+          <div class="timeline">
+            <div class="timeline-circle">00:30</div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="right-content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, laborum
+            porro. Molestias exercitationem, velit accusantium quas reiciendis
+            modi excepturi at esse illo deleniti optio odio recusandae
+            consectetur. Saepe, repudiandae aliquid natus eveniet esse
+            reprehenderit suscipit, explicabo perspiciatis necessitatibus
+            laborum autem deleniti enim quas aperiam dolores, amet minima sit
+            omnis minus? Dicta tempora maxime nemo animi expedita exercitationem
+            delectus ipsa commodi, quae non fugiat, autem sit nihil rerum iure
+            dolore officiis numquam labore? Earum architecto tempora rerum
+            repellat veritatis consectetur recusandae? Nobis dolorem dicta odit
+            debitis tempora ex totam ipsam, vel laborum magnam quis. Quibusdam
+            quidem enim numquam dolorum, unde fugiat.
+          </div>
+        </div>
+        <div class="time-line-item">
+          <div class="left-content">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Laboriosam, dolorum?
+          </div>
+          <div class="timeline">
+            <div class="timeline-circle">00:30</div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="right-content"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    // Callback function for the observer
+    const callback = (entries, observer) => {
+      entries.forEach((entry) => {
+        const leftContent =
+          entry.target.getElementsByClassName("left-content")[0];
+        const rightContent =
+          entry.target.getElementsByClassName("right-content")[0];
+
+        if (entry.isIntersecting) {
+          rightContent.classList.remove("transition-to-right");
+          leftContent.classList.remove("transition-to-left");
+        } else {
+          rightContent.classList.add("transition-to-right");
+          leftContent.classList.add("transition-to-left");
+        }
+      });
+    };
+
+    // Options for the observer
+    const options = {
+      root: null, // use the viewport as the root
+      rootMargin: "0px",
+      threshold: 0.4, // Trigger when 10% of the element is visible
+    };
+
+    // Create an Intersection Observer
+    const observer = new IntersectionObserver(callback, options);
+
+    // Select all elements you want to observe
+    const boxes = document.querySelectorAll(".time-line-item");
+
+    // Observe each element
+    boxes.forEach((box) => {
+      observer.observe(box);
+    });
+  </script>
+</html>
